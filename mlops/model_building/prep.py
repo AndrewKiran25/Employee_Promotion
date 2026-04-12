@@ -12,7 +12,11 @@ from sklearn.model_selection import train_test_split
 from huggingface_hub import login, HfApi
 
 # Define constants for the dataset and output paths
-hf_token = userdata.get("HF_TOKEN")
+hf_token = os.getenv("HF_TOKEN")
+
+if not hf_token:
+    raise ValueError("HF_TOKEN is missing!")
+
 api = HfApi(token=hf_token)
 
 DATASET_PATH = "hf://datasets/Andrew2505/Employee-Promotion/employee_promotion_final.csv"

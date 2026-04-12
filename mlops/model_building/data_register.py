@@ -6,10 +6,12 @@ import os
 repo_id = "Andrew2505/Employee-Promotion"
 repo_type = "dataset"
 
-hf_token = userdata.get("HF_TOKEN")
+hf_token = os.getenv("HF_TOKEN")
 
 if not hf_token:
     raise ValueError("HF_TOKEN is missing!")
+
+api = HfApi(token=hf_token)
 
 # Initialize API client
 api = HfApi(token=hf_token)

@@ -1,7 +1,11 @@
 from huggingface_hub import HfApi
 import os
 
-hf_token = userdata.get("HF_TOKEN")
+hf_token = os.getenv("HF_TOKEN")
+
+if not hf_token:
+    raise ValueError("HF_TOKEN is missing!")
+
 api = HfApi(token=hf_token)
 
 api.upload_folder(

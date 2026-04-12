@@ -170,10 +170,14 @@ with mlflow.start_run():
     repo_id = "Andrew2505/Employee_Promotion"
     repo_type = "model"
 
-  hf_token = userdata.get("HF_TOKEN")
+  hf_token = os.getenv("HF_TOKEN")
+
+  if not hf_token:
+    raise ValueError("HF_TOKEN is missing!")
+
   api = HfApi(token=hf_token)
 
-    # Step 1: Check if the space exists
+  # Step 1: Check if the space exists
     try:
         api.repo_info(repo_id=repo_id, repo_type=repo_type)
         print(f"Space '{repo_id}' already exists. Using it.")
