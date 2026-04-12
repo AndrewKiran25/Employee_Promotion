@@ -1,7 +1,7 @@
 from huggingface_hub import HfApi
 import os
 
-api = HfApi(token=os.getenv("HF_TOKEN"))
+api = HfApi(token=os.getenv("token1"))
 api.upload_folder(
     folder_path="/content/mlops/deployment",     # the local folder containing your files
     repo_id="Andrew2505/Employee-Promotion",          # the target repo

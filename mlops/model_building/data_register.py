@@ -1,15 +1,12 @@
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 from huggingface_hub import HfApi, create_repo
-from google.colab import userdata
 import os
 
 repo_id = "Andrew2505/Employee-Promotion"
 repo_type = "dataset"
 
-os.environ["HF_TOKEN"] = userdata.get('token1')
-
 # Initialize API client
-api = HfApi(token=os.getenv("HF_TOKEN"))
+api = HfApi(token=os.getenv("token1"))
 
 # Step 1: Check if the space exists
 try:

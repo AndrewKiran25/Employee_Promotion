@@ -11,10 +11,8 @@ from sklearn.model_selection import train_test_split
 # for hugging face space authentication to upload files
 from huggingface_hub import login, HfApi
 
-os.environ["HF_TOKEN"] = userdata.get('token1')
-
 # Define constants for the dataset and output paths
-api = HfApi(token1=os.getenv("HF_TOKEN"))
+api = HfApi(token1=os.getenv("token1"))
 
 DATASET_PATH = "hf://datasets/Andrew2505/Employee-Promotion/employee_promotion_final.csv"
 promotion_dataset = pd.read_csv(DATASET_PATH)
