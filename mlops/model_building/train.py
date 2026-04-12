@@ -170,8 +170,8 @@ with mlflow.start_run():
     repo_id = "Andrew2505/Employee_Promotion"
     repo_type = "model"
 
-    os.environ["HF_TOKEN"] = userdata.get('token1')
-    api = HfApi(token=os.getenv("HF_TOKEN"))
+  hf_token = userdata.get("HF_TOKEN")
+  api = HfApi(token=hf_token)
 
     # Step 1: Check if the space exists
     try:

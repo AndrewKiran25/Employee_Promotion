@@ -12,7 +12,8 @@ from sklearn.model_selection import train_test_split
 from huggingface_hub import login, HfApi
 
 # Define constants for the dataset and output paths
-api = HfApi(token1=os.getenv("token1"))
+hf_token = userdata.get("HF_TOKEN")
+api = HfApi(token=hf_token)
 
 DATASET_PATH = "hf://datasets/Andrew2505/Employee-Promotion/employee_promotion_final.csv"
 promotion_dataset = pd.read_csv(DATASET_PATH)

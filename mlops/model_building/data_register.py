@@ -5,8 +5,13 @@ import os
 repo_id = "Andrew2505/Employee-Promotion"
 repo_type = "dataset"
 
+hf_token = userdata.get("HF_TOKEN")
+
+if not hf_token:
+    raise ValueError("HF_TOKEN is missing!")
+
 # Initialize API client
-api = HfApi(token=os.getenv("token1"))
+api = HfApi(token=hf_token)
 
 # Step 1: Check if the space exists
 try:
@@ -18,7 +23,7 @@ except RepositoryNotFoundError:
     print(f"Space '{repo_id}' created.")
 
 api.upload_folder(
-    folder_path="mlops/data",
+    folder_path="/content/mlops/data",
     repo_id=repo_id,
     repo_type=repo_type,
 )
