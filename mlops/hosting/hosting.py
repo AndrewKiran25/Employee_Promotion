@@ -1,10 +1,10 @@
 from huggingface_hub import HfApi
 import os
 
-hf_token = os.getenv("HF_TOKEN")
+hf_token = os.getenv("token1")
 
 if not hf_token:
-    raise ValueError("HF_TOKEN is missing!")
+    raise ValueError("token1 is missing!")
 
 api = HfApi(token=hf_token)
 

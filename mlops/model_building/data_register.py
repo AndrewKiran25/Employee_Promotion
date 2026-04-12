@@ -1,15 +1,14 @@
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 from huggingface_hub import HfApi, create_repo
-from google.colab import userdata
 import os
 
 repo_id = "Andrew2505/Employee-Promotion"
 repo_type = "dataset"
 
-hf_token = os.getenv("HF_TOKEN")
+hf_token = os.getenv("token1")
 
 if not hf_token:
-    raise ValueError("HF_TOKEN is missing!")
+    raise ValueError("token1 is missing!")
 
 api = HfApi(token=hf_token)
 
@@ -26,7 +25,8 @@ except RepositoryNotFoundError:
     print(f"Space '{repo_id}' created.")
 
 api.upload_folder(
-    folder_path="/content/mlops/data",
+    folder_path="mlops/data",
     repo_id=repo_id,
     repo_type=repo_type,
+    token=hf_token
 )
