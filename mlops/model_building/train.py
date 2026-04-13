@@ -229,3 +229,4 @@ with mlflow.start_run():
         repo_id=repo_id,
         repo_type=repo_type,
     )
+    print(f"Uploaded: {file_path}")
