@@ -4,7 +4,12 @@ from huggingface_hub import hf_hub_download
 import joblib
 
 # Download the model from the Model Hub
-model_path = hf_hub_download(repo_id="Andrew2505/Employee-Promotion", filename="best_model_v1.joblib")
+model_path = hf_hub_download(
+    repo_id="Andrew2505/Employee-Promotion", 
+    filename="best_model_v1.joblib",
+    repo_type="dataset", 
+    token=os.getenv("HF_TOKEN")      
+)
 
 # Load the model
 model = joblib.load(model_path)
