@@ -19,7 +19,7 @@ no_of_trainings = st.number_input("Number of Trainings", min_value=0, value=3)
 age = st.number_input("Age", min_value=18, max_value=100, value=30)
 previous_year_rating = st.number_input("Previous Year Rating", min_value=1, max_value=5, value=3)
 length_of_service = st.number_input("Length of Service", min_value=0, value=5)
-awards_won = st.selectbox("Awards Won?", ["Yes", "No"])
+awards_won_str = st.selectbox("Awards Won?", ["Yes", "No"])
 avg_training_score = st.number_input("Average Training Score", min_value=0, max_value=1000, value=75)
 department = st.selectbox("Department", ('Sales & Marketing', 'Operations', 'Technology', 'Analytics',
        'R&D', 'Procurement', 'Finance', 'HR', 'Legal'))
@@ -32,6 +32,9 @@ region = st.selectbox('region', ('region_7', 'region_22', 'region_19', 'region_2
        'region_24', 'region_3', 'region_9', 'region_18'))
 gender = st.selectbox('gender', ('m', 'f'))
 recruitment_channel = st.selectbox('recruitment_channel', ('sourcing', 'other', 'referred'))
+
+# Convert 'awards_won' to numerical format (0 or 1)
+awards_won = 1 if awards_won_str == "Yes" else 0
 
 # Convert categorical inputs to match model training
 input_data = pd.DataFrame([{
