@@ -224,9 +224,10 @@ with mlflow.start_run():
 
     # create_repo("classification-model", repo_type="model", private=False)
     api.upload_file(
-        path_or_fileobj="best_model_v1.joblib",
+        path_or_fileobj=model_path,
         path_in_repo="best_model_v1.joblib",
         repo_id=repo_id,
         repo_type=repo_type,
+        token=hf_token
     )
     print(f"Uploaded: {model_path}")
