@@ -206,14 +206,14 @@ with mlflow.start_run():
     repo_id = "Andrew2505/Employee_Promotion"
     repo_type = "model"
 
-  hf_token = os.getenv("TOKEN1")
+    hf_token = os.getenv("TOKEN1")
 
-  if not hf_token:
-    raise ValueError("TOKEN1 is missing!")
+    if not hf_token:
+        raise ValueError("TOKEN1 is missing!")
 
-  api = HfApi(token=hf_token)
+    api = HfApi(token=hf_token)
 
-  # Step 1: Check if the model exists
+    # Step 1: Check if the model exists
     try:
         api.repo_info(repo_id=repo_id, repo_type=repo_type)
         print(f"Model Space '{repo_id}' already exists. Using it.")
@@ -229,4 +229,4 @@ with mlflow.start_run():
         repo_id=repo_id,
         repo_type=repo_type,
     )
-    print(f"Uploaded: {file_path}")
+    print(f"Uploaded: {model_path}")

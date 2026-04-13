@@ -1,6 +1,8 @@
 # for data manipulation
 import pandas as pd
 import sklearn
+from sklearn.model_selection import train_test_split
+from huggingface_hub import login, HfApi
 
 # for creating a folder
 import os
@@ -17,11 +19,14 @@ hf_token = os.getenv("TOKEN1")
 if not hf_token:
     raise ValueError("TOKEN1 is missing!")
 
+login(token=hf_token) 
+
 api = HfApi(token=hf_token)
 
 DATASET_PATH = "hf://datasets/Andrew2505/Employee-Promotion/employee_promotion_final.csv"
 promotion_dataset = pd.read_csv(DATASET_PATH)
 print("Dataset loaded successfully.")
+
 
 # Define the target variable for the classification task
 target = 'is_promoted'
