@@ -55,13 +55,13 @@ y = promotion_dataset[target]
 
 # Split the dataset into training, validation and test sets
 # Step 1: Train + Temp (80%)
-X_train, X_temp, y_train, y_temp = train_test_split(
+Xtrain, Xtemp, ytrain, ytemp = train_test_split(
     X, y, test_size=0.3, random_state=0, stratify=y
 )
 
 # then we split the temporary set into train and validation
-X_val, X_test, y_val, y_test = train_test_split(
-    X_temp, y_temp, test_size=0.5, random_state=0, stratify=y_temp
+Xval, Xtest, yval, ytest = train_test_split(
+    Xtemp, ytemp, test_size=0.5, random_state=0, stratify=ytemp
 )
 
 Xtrain.to_csv("Xtrain.csv",index=False)
@@ -71,7 +71,6 @@ ytrain.to_csv("ytrain.csv",index=False)
 yval.to_csv("yval.csv",index=False)
 ytest.to_csv("ytest.csv",index=False)
 
-
 files = ["Xtrain.csv","Xval.csv","Xtest.csv","ytrain.csv","ytrain.csv","ytest.csv"]
 
 for file_path in files:
@@ -80,4 +79,5 @@ for file_path in files:
         path_in_repo=file_path.split("/")[-1],  # just the filename
         repo_id="Andrew2505/Employee-Promotion",
         repo_type="dataset",
+        token=hf_token
     )
