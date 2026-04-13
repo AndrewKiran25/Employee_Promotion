@@ -203,7 +203,7 @@ with mlflow.start_run():
     print(f"Model saved as artifact at: {model_path}")
 
     # Upload to Hugging Face
-    repo_id = "Andrew2505/Employee_Promotion"
+    repo_id = "Andrew2505/Employee-Promotion" # Changed from Employee_Promotion to Employee-Promotion
     repo_type = "model"
 
     hf_token = os.getenv("TOKEN1")
@@ -222,7 +222,7 @@ with mlflow.start_run():
         create_repo(repo_id=repo_id, repo_type=repo_type, private=False, token=hf_token)
         print(f"Model Space '{repo_id}' created.")
 
-    # create_repo("churn-model", repo_type="model", private=False)
+    # create_repo("classification-model", repo_type="model", private=False)
     api.upload_file(
         path_or_fileobj="best_model_v1.joblib",
         path_in_repo="best_model_v1.joblib",
