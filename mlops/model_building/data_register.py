@@ -5,10 +5,10 @@ import os
 repo_id = "Andrew2505/Employee-Promotion"
 repo_type = "dataset"
 
-hf_token = os.getenv("token1")
+hf_token = os.getenv("TOKEN1")
 
 if not hf_token:
-    raise ValueError("token1 is missing!")
+    raise ValueError("TOKEN1 is missing!")
 
 # Initialize API client
 api = HfApi(token=hf_token)

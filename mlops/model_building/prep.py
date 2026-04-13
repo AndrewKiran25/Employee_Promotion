@@ -12,10 +12,10 @@ from sklearn.model_selection import train_test_split
 from huggingface_hub import login, HfApi
 
 # Define constants for the dataset and output paths
-hf_token = os.getenv("token1")
+hf_token = os.getenv("TOKEN1")
 
 if not hf_token:
-    raise ValueError("token1 is missing!")
+    raise ValueError("TOKEN1 is missing!")
 
 api = HfApi(token=hf_token)
 
