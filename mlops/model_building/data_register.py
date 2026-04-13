@@ -10,19 +10,17 @@ hf_token = os.getenv("token1")
 if not hf_token:
     raise ValueError("token1 is missing!")
 
-api = HfApi(token=hf_token)
-
 # Initialize API client
 api = HfApi(token=hf_token)
 
 # Step 1: Check if the space exists
 try:
     api.repo_info(repo_id=repo_id, repo_type=repo_type)
-    print(f"Space '{repo_id}' already exists. Using it.")
+    print(f"Dataset '{repo_id}' already exists. Using it.")
 except RepositoryNotFoundError:
-    print(f"Space '{repo_id}' not found. Creating new space...")
+    print(f"Dataset '{repo_id}' not found. Creating new space...")
     create_repo(repo_id=repo_id, repo_type=repo_type, private=False)
-    print(f"Space '{repo_id}' created.")
+    print(f"Dataset '{repo_id}' created.")
 
 api.upload_folder(
     folder_path="mlops/data",

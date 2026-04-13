@@ -12,10 +12,10 @@ from sklearn.model_selection import train_test_split
 from huggingface_hub import login, HfApi
 
 # Define constants for the dataset and output paths
-hf_token = os.getenv("HF_TOKEN")
+hf_token = os.getenv("token1")
 
 if not hf_token:
-    raise ValueError("HF_TOKEN is missing!")
+    raise ValueError("token1 is missing!")
 
 api = HfApi(token=hf_token)
 
@@ -53,20 +53,26 @@ X = promotion_dataset[numeric_features + categorical_features + ordinal_feature]
 # Define target variable
 y = promotion_dataset[target]
 
-# Split the dataset into training and test sets
-Xtrain, Xtest, ytrain, ytest = train_test_split(
-    X, y,              # Predictors (X) and target variable (y)
-    test_size=0.2,     # 20% of the data is reserved for testing
-    random_state=42    # Ensures reproducibility by setting a fixed random seed
+# Split the dataset into training, validation and test sets
+# Step 1: Train + Temp (80%)
+X_train, X_temp, y_train, y_temp = train_test_split(
+    X, y, test_size=0.3, random_state=0, stratify=y
+)
+
+# then we split the temporary set into train and validation
+X_val, X_test, y_val, y_test = train_test_split(
+    X_temp, y_temp, test_size=0.5, random_state=0, stratify=y_temp
 )
 
 Xtrain.to_csv("Xtrain.csv",index=False)
+Xval.to_csv("Xval.csv",index=False)
 Xtest.to_csv("Xtest.csv",index=False)
 ytrain.to_csv("ytrain.csv",index=False)
+yval.to_csv("yval.csv",index=False)
 ytest.to_csv("ytest.csv",index=False)
 
 
-files = ["Xtrain.csv","Xtest.csv","ytrain.csv","ytest.csv"]
+files = ["Xtrain.csv","Xval.csv","Xtest.csv","ytrain.csv","ytrain.csv","ytest.csv"]
 
 for file_path in files:
     api.upload_file(
