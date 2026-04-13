@@ -1,8 +1,8 @@
+import os
 import streamlit as st
 import pandas as pd
 from huggingface_hub import hf_hub_download
 import joblib
-import os
 
 # Download the model from the Model Hub
 model_path = hf_hub_download(
