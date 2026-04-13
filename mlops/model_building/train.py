@@ -31,13 +31,17 @@ mlflow.set_experiment("mlops-training-experiment")
 api = HfApi()
 
 Xtrain_path = "hf://datasets/Andrew2505/Employee-Promotion/Xtrain.csv"
-Xtest_path = "hf://datasets/Andrew2505/Employee-Promotion/ytrain.csv"
-ytrain_path = "hf://datasets/Andrew2505/Employee-Promotion/Xtest.csv"
-ytest_path = "hf://datasets/<Andrew2505/Employee-Promotion/Xtest.csv"
+Xtest_path = "hf://datasets/Andrew2505/Employee-Promotion/Xtest.csv"
+Xval_path = "hf://datasets/Andrew2505/Employee-Promotion/Xval.csv"
+ytrain_path = "hf://datasets/Andrew2505/Employee-Promotion/ytrain.csv"
+yval_path = "hf://datasets/Andrew2505/Employee-Promotion/yval.csv"
+ytest_path = "hf://datasets/<Andrew2505/Employee-Promotion/ytest.csv"
 
 Xtrain = pd.read_csv(Xtrain_path)
+Xval = pd.read_csv(Xval_path)
 Xtest = pd.read_csv(Xtest_path)
 ytrain = pd.read_csv(ytrain_path)
+yval = pd.read_csv(yval_path)
 ytest = pd.read_csv(ytest_path)
 
 # Numerical features
@@ -168,7 +172,6 @@ with mlflow.start_run():
     train_report = classification_report(ytrain, y_pred_train, output_dict=True)
     val_report = classification_report(yval, y_pred_val, output_dict=True)
     test_report = classification_report(ytest, y_pred_test, output_dict=True)
-
 
     # Log metrics to MLflow
     mlflow.log_metrics({

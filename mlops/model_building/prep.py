@@ -55,23 +55,23 @@ y = promotion_dataset[target]
 
 # Split the dataset into training, validation and test sets
 # Step 1: Train + Temp (80%)
-Xtrain, Xtemp, ytrain, ytemp = train_test_split(
+X_train, X_temp, y_train, y_temp = train_test_split(
     X, y, test_size=0.3, random_state=0, stratify=y
 )
 
 # then we split the temporary set into train and validation
-Xval, Xtest, yval, ytest = train_test_split(
-    Xtemp, ytemp, test_size=0.5, random_state=0, stratify=ytemp
+X_val, X_test, y_val, y_test = train_test_split(
+    X_temp, y_temp, test_size=0.5, random_state=0, stratify=y_temp
 )
 
-Xtrain.to_csv("Xtrain.csv",index=False)
-Xval.to_csv("Xval.csv",index=False)
-Xtest.to_csv("Xtest.csv",index=False)
-ytrain.to_csv("ytrain.csv",index=False)
-yval.to_csv("yval.csv",index=False)
-ytest.to_csv("ytest.csv",index=False)
+X_train.to_csv("Xtrain.csv",index=False)
+X_val.to_csv("Xval.csv",index=False)
+X_test.to_csv("Xtest.csv",index=False)
+y_train.to_csv("ytrain.csv",index=False)
+y_val.to_csv("yval.csv",index=False)
+y_test.to_csv("ytest.csv",index=False)
 
-files = ["Xtrain.csv","Xval.csv","Xtest.csv","ytrain.csv","ytrain.csv","ytest.csv"]
+files = ["Xtrain.csv","Xval.csv","Xtest.csv","ytrain.csv","yval.csv","ytest.csv"]
 
 for file_path in files:
     api.upload_file(
