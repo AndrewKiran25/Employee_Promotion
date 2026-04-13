@@ -26,7 +26,7 @@ import mlflow
 from imblearn.over_sampling import SMOTE
 
 mlflow.set_tracking_uri("http://localhost:5000")
-mlflow.set_experiment("mlops-training-experiment")
+mlflow.set_experiment("mlops-experiment")
 
 api = HfApi()
 
