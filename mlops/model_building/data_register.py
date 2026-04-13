@@ -18,12 +18,13 @@ try:
     api.repo_info(repo_id=repo_id, repo_type=repo_type)
     print(f"Dataset '{repo_id}' already exists. Using it.")
 except RepositoryNotFoundError:
-    print(f"Dataset '{repo_id}' not found. Creating new space...")
+    print(f"Dataset '{repo_id}' not found. Creating new dataset...")
     create_repo(repo_id=repo_id, repo_type=repo_type, private=False,token=hf_token)
     print(f"Dataset '{repo_id}' created.")
 
 api.upload_folder(
     folder_path="mlops/data",
     repo_id=repo_id,
-    repo_type=repo_type
+    repo_type=repo_type,
+    token=hf_token
 )
