@@ -25,8 +25,8 @@ import mlflow
 # for handling imbalanced datasets
 from imblearn.over_sampling import SMOTE
 
-mlflow.set_tracking_uri("http://localhost:5000")
-mlflow.set_experiment("mlops-experiment")
+mlflow.set_tracking_uri("http://127.0.0.1:5000")
+mlflow.set_experiment("Employee-Promotion-Experiment")
 
 api = HfApi()
 
