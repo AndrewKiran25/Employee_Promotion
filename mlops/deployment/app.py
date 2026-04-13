@@ -37,6 +37,7 @@ region = st.selectbox('region', ('region_7', 'region_22', 'region_19', 'region_2
        'region_24', 'region_3', 'region_9', 'region_18'))
 gender = st.selectbox('gender', ('m', 'f'))
 recruitment_channel = st.selectbox('recruitment_channel', ('sourcing', 'other', 'referred'))
+education = st.selectbox('Education', ("Bachelor's", "Master's & above", "Below Secondary"))
 
 # Convert 'awards_won' to numerical format (0 or 1)
 awards_won = 1 if awards_won_str == "Yes" else 0
@@ -52,7 +53,8 @@ input_data = pd.DataFrame([{
     'department': department,
     'region': region,
     'gender': gender,
-    'recruitment_channel': recruitment_channel
+    'recruitment_channel': recruitment_channel,
+    'education': education
 }])
 
 # Set the classification threshold
