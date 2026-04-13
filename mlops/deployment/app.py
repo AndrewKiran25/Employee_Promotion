@@ -8,8 +8,7 @@ import joblib
 model_path = hf_hub_download(
     repo_id="Andrew2505/Employee-Promotion",
     filename="best_model_v1.joblib",
-    repo_type="model",
-    token=os.getenv("TOKEN1")
+    repo_type="model"
 )
 
 # Load the model
