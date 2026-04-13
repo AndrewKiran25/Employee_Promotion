@@ -195,7 +195,7 @@ with mlflow.start_run():
 })
 
     # Save the model locally
-    model_path = "/content/mlops/model_building/best_model_v1.joblib"
+    model_path = "mlops/model_building/best_model_v1.joblib"
     joblib.dump(best_model, model_path)
 
     # Log the model artifact
