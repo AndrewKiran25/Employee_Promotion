@@ -213,14 +213,14 @@ with mlflow.start_run():
 
   api = HfApi(token=hf_token)
 
-  # Step 1: Check if the space exists
+  # Step 1: Check if the model exists
     try:
         api.repo_info(repo_id=repo_id, repo_type=repo_type)
-        print(f"Space '{repo_id}' already exists. Using it.")
+        print(f"Model Space '{repo_id}' already exists. Using it.")
     except RepositoryNotFoundError:
-        print(f"Space '{repo_id}' not found. Creating new space...")
-        create_repo(repo_id=repo_id, repo_type=repo_type, private=False)
-        print(f"Space '{repo_id}' created.")
+        print(f"Model Space '{repo_id}' not found. Creating new model space...")
+        create_repo(repo_id=repo_id, repo_type=repo_type, private=False, token=hf_token)
+        print(f"Model Space '{repo_id}' created.")
 
     # create_repo("churn-model", repo_type="model", private=False)
     api.upload_file(
