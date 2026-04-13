@@ -12,7 +12,7 @@ from imblearn.pipeline import Pipeline
 
 # for model training, tuning, and evaluation
 import xgboost as xgb
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import GridSearchCV, StratifiedKFold, RandomizedSearchCV
 from sklearn.metrics import accuracy_score, classification_report, recall_score
 # for model serialization
 import joblib
