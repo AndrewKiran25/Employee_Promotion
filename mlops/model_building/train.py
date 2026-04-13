@@ -35,7 +35,7 @@ Xtest_path = "hf://datasets/Andrew2505/Employee-Promotion/Xtest.csv"
 Xval_path = "hf://datasets/Andrew2505/Employee-Promotion/Xval.csv"
 ytrain_path = "hf://datasets/Andrew2505/Employee-Promotion/ytrain.csv"
 yval_path = "hf://datasets/Andrew2505/Employee-Promotion/yval.csv"
-ytest_path = "hf://datasets/<Andrew2505/Employee-Promotion/ytest.csv"
+ytest_path = "hf://datasets/Andrew2505/Employee-Promotion/ytest.csv"
 
 Xtrain = pd.read_csv(Xtrain_path)
 Xval = pd.read_csv(Xval_path)
